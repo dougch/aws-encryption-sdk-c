@@ -1,8 +1,13 @@
 # AWS Encryption SDK for C
 
+[![GitHub](https://img.shields.io/github/license/awslabs/aws-c-common.svg)](https://github.com/awslabs/aws-c-common/blob/master/LICENSE) [![Docs Build Status](https://readthedocs.org/projects/aws-encryption-sdk-c/badge/)](https://aws.github.io/aws-encryption-sdk-c/html/index.html)
+
+
+
+
 |Target| Build state     |  
 |------------|-----------|
-|Docs        |[![Docs Build Status](https://readthedocs.org/projects/aws-encryption-sdk-c/badge/)](https://aws.github.io/aws-encryption-sdk-c/html/index.html)|
+|  | |
 |Windows VS2015_x86 Build |[![Windows VS2015_x86 Build Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiSytoZHpzZDhaTVR2RUFISUR3ZkFmbDE4MTJ5NUwyKzZrd1pERk1VVGpDcmdnQ2Y5MkRUQUVpamVDc2xUNlppTUcrV2NXWFA3ZmhaUHk1N0VJUDg0eGFRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImNkTk5jRGZZUFZSemE4NVQiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://github.com/aws/aws-encryption-sdk-c)|
 |Windows VS2015 Build | [![Build](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiS0IxT1U3cWl1QTUybHJ1NE9ITlZ4QlhEQkVxcFV5MVJNd2QrQXVyZFErZmgzWHZvcXd5N2hiV2N3WlRZYzNHVjJha2pUUlpKUzJVbERDakdIQThTYnlBPSIsIml2UGFyYW1ldGVyU3BlYyI6ImI2eGk2Q1VzNElYcEZ2Q1UiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://github.com/aws/aws-encryption-sdk-c)|
 |Windows VS2017 Build | [![Build](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYXBOYUp4VHJBTXF3SVJTSEVWa1o0aFVWMk90d1h5TEErMFNlLzdraVJSMnc1dk9wdjdOQWdrdnNpNlREWmF0OFVXbUxmQXB2UUJMaHlLcFE4TmtudnFJPSIsIml2UGFyYW1ldGVyU3BlYyI6ImlwZ2hrRW9UaUtOeHJtZEIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://github.com/aws/aws-encryption-sdk-c)|
