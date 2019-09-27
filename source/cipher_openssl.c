@@ -42,7 +42,8 @@
  * for other languages which generated signatures of nondeterministic size.
  */
 
-#define MAX_SIGNATURE_SIZE 128
+
+#define MAX_SIGNATURE_SIZE 256
 #define MAX_SIGNATURE_SIZE_B64 (((MAX_SIGNATURE_SIZE + 2) * 4) / 3)
 
 // Compatibility hacks for openssl API changes between major versions
@@ -252,7 +253,7 @@ static int serialize_pubkey(struct aws_allocator *alloc, EC_KEY *keypair, struct
     }
 
     binary = aws_byte_cursor_from_array(buf, length);
-    b64    = aws_byte_buf_from_array(tmp, sizeof(tmp));
+    b64 = aws_byte_buf_from_empty_array(tmp, sizeof(tmp));
 
     if (aws_base64_compute_encoded_len(length, &b64_len)) {
         goto err;
