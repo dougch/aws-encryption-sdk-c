@@ -15,16 +15,16 @@ jobs:
         run: brew install openssl@1.1
 
       - name: Checkout PR
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Checkout Dependencies
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           repository: "https://github.com/aws/aws-sdk-cpp.git"
           ref: "1.7.231"
 
       - name: Build and install aws-sdk-cpp
-      - run: |
+        run: |
           mkdir -p build-aws-sdk-cpp ||true
           mkdir -p install || true
           cd build-aws-encryption-sdk-c
@@ -33,7 +33,7 @@ jobs:
           xcodebuild -target install
 
       - name: Build C-ESDK
-      - run: |
+        run: |
           mkdir build-aws-encryption-sdk-c || true
           cd build-aws-encryption-sdk-c
           cmake -G Xcode -DBUILD_SHARED_LIBS=ON -DOPENSSL_ROOT_DIR="/usr/local/opt/openssl@1.1" ../aws-encryption-sdk-c
