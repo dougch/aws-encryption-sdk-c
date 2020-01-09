@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Dependencies
         uses: actions/checkout@v2
         with:
-          repository: "https://github.com/aws/aws-sdk-cpp.git"
+          repository: "aws/aws-sdk-cpp"
           ref: "1.7.231"
 
       - name: Build and install aws-sdk-cpp
