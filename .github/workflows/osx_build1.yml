@@ -24,12 +24,14 @@ jobs:
         with:
           repository: "aws/aws-sdk-cpp"
           ref: "1.7.231"
+          path: "aws-sdk-cpp"
 
       - name: Debug/inspect
         run: |
+          echo "running ls:"
           ls -AL
-          tree
-          find . -ls
+          echo "Done running ls"
+          pwd
       - name: Build and install aws-sdk-cpp
         run: |
           mkdir -p build-aws-sdk-cpp ||true
