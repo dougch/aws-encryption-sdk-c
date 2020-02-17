@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['keyring_5ftrace_340',['keyring_trace',['../structaws__cryptosdk__enc__materials.html#a6df54a1985086711a42bedcdcb888cba',1,'aws_cryptosdk_enc_materials::keyring_trace()'],['../structaws__cryptosdk__dec__materials.html#acb22cd3aa0cf48cb58a74faa3ccddccc',1,'aws_cryptosdk_dec_materials::keyring_trace()']]]
+  ['header_5ftest_5fcases',['header_test_cases',['../testing_8h.html#a5368a9629592cb62ffeef05295368465',1,'testing.h']]],
+  ['hkdf_5ftest_5fcases',['hkdf_test_cases',['../testing_8h.html#ab25edf8b2b60d98ae05123b383bbf8cd',1,'testing.h']]]
 ];

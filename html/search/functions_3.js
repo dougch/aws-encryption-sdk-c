@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getclient_315',['GetClient',['../class_aws_1_1_cryptosdk_1_1_kms_keyring_1_1_client_supplier.html#a9075c091dea5c50da261116741eda5d5',1,'Aws::Cryptosdk::KmsKeyring::ClientSupplier::GetClient()'],['../class_aws_1_1_cryptosdk_1_1_kms_keyring_1_1_caching_client_supplier.html#a603d6f0d3b6ad21cfb806fffa3a95856',1,'Aws::Cryptosdk::KmsKeyring::CachingClientSupplier::GetClient()'],['../class_aws_1_1_cryptosdk_1_1_kms_keyring_1_1_single_client_supplier.html#afcb19535d9f52c25fcc40210b2533777',1,'Aws::Cryptosdk::KmsKeyring::SingleClientSupplier::GetClient()']]]
+  ['dec_5fmaterials_5feq',['dec_materials_eq',['../cache__test__lib_8h.html#a40d3a4319e65dba068e8b6ce22216898',1,'cache_test_lib.h']]],
+  ['decrypt',['Decrypt',['../class_aws_1_1_cryptosdk_1_1_testing_1_1_kms_client_mock.html#acd42b5cb023eacaa9c815b02abd079df',1,'Aws::Cryptosdk::Testing::KmsClientMock']]]
 ];

@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['cache_326',['cache',['../class_aws_1_1_cryptosdk_1_1_kms_keyring_1_1_caching_client_supplier.html#aef66dfc2ccd115c65d9c00fe4cc2f54d',1,'Aws::Cryptosdk::KmsKeyring::CachingClientSupplier']]],
-  ['cache_5fmutex_327',['cache_mutex',['../class_aws_1_1_cryptosdk_1_1_kms_keyring_1_1_caching_client_supplier.html#a295c56d8d7dbdad6275c41c963ecbf55',1,'Aws::Cryptosdk::KmsKeyring::CachingClientSupplier']]],
-  ['cipher_5fname_328',['cipher_name',['../structaws__cryptosdk__alg__properties.html#a38af5b98bff5418e3a0ff6698fe6e90f',1,'aws_cryptosdk_alg_properties']]],
-  ['ciphertext_329',['ciphertext',['../structaws__cryptosdk__edk.html#a27ced5fe382742867e38378cc4791558',1,'aws_cryptosdk_edk']]],
-  ['content_5fkey_5flen_330',['content_key_len',['../structaws__cryptosdk__alg__properties.html#aaca88e43b466d2fe8738b09e8c1983ae',1,'aws_cryptosdk_alg_properties']]]
+  ['base',['base',['../structtest__keyring.html#a5702102da4ca993e55f0914f8120344a',1,'test_keyring::base()'],['../structmock__materials__cache.html#a774a22a674350b417d59025336a574f7',1,'mock_materials_cache::base()'],['../structmock__upstream__cmm.html#aa3cb8c7a74f538e4ddb9ecb17b4e3189',1,'mock_upstream_cmm::base()']]]
 ];

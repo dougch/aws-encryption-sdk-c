@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['signature_5flen_350',['signature_len',['../structaws__cryptosdk__alg__properties.html#a5ccf9a655d66c1d1b9ff53d6d587db6a',1,'aws_cryptosdk_alg_properties']]],
-  ['signctx_351',['signctx',['../structaws__cryptosdk__enc__materials.html#a6817c2142ea3af51d787fc499e97fa65',1,'aws_cryptosdk_enc_materials::signctx()'],['../structaws__cryptosdk__dec__materials.html#ae66cab32ec563ea4e6ce67ca52e60e48',1,'aws_cryptosdk_dec_materials::signctx()']]]
+  ['on_5fdecrypt',['on_decrypt',['../structaws__cryptosdk__keyring__vt.html#a598387fa9a0b7bea39825b6388a012d6',1,'aws_cryptosdk_keyring_vt']]],
+  ['on_5fdecrypt_5fcalled',['on_decrypt_called',['../structtest__keyring.html#a97111b328494dbc6f053efaef2110dc0',1,'test_keyring']]],
+  ['on_5fencrypt',['on_encrypt',['../structaws__cryptosdk__keyring__vt.html#a991b8f7dd167b0c1b8a6db1d937eae77',1,'aws_cryptosdk_keyring_vt']]],
+  ['on_5fencrypt_5fcalled',['on_encrypt_called',['../structtest__keyring.html#a3ac8eea408b3589a029d56525fe96a51',1,'test_keyring']]]
 ];

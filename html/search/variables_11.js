@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['wrapping_5fkey_5fname_356',['wrapping_key_name',['../structaws__cryptosdk__keyring__trace__record.html#a095e44b9cc097a6be3ebc18b9f1e7dd0',1,'aws_cryptosdk_keyring_trace_record']]],
-  ['wrapping_5fkey_5fnamespace_357',['wrapping_key_namespace',['../structaws__cryptosdk__keyring__trace__record.html#aea821451d88abc5a7b97aafe4cf60862',1,'aws_cryptosdk_keyring_trace_record']]]
+  ['tag_5flen',['tag_len',['../structaws__cryptosdk__alg__properties.html#ae5daefb1cf93cb853bb24d1680692b5b',1,'aws_cryptosdk_alg_properties']]],
+  ['test_5ffn',['test_fn',['../structtest__case.html#ad4121ea86fc9b6f801a2fcd94ec73ffe',1,'test_case']]],
+  ['test_5fkeyring_5fvt',['test_keyring_vt',['../test__keyring_8h.html#a1ab97de60a6d0d1a0d66488a82aeffad',1,'test_keyring.h']]],
+  ['trailing_5fsig_5ftest_5fcases',['trailing_sig_test_cases',['../testing_8h.html#a519afa88bb0f39926ccd0d9c3326ea67',1,'testing.h']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['impl_338',['impl',['../structaws__cryptosdk__alg__properties.html#ac29461db6b28e00cadee68025b685c8a',1,'aws_cryptosdk_alg_properties']]],
-  ['iv_5flen_339',['iv_len',['../structaws__cryptosdk__alg__properties.html#a916517738f07f3a9064c4a954c316c23',1,'aws_cryptosdk_alg_properties']]]
+  ['generate_5fenc_5fmaterials',['generate_enc_materials',['../structaws__cryptosdk__cmm__vt.html#aac32597a6ceed2b476844d83136e8379',1,'aws_cryptosdk_cmm_vt']]],
+  ['generated_5fdata_5fkey_5fto_5freturn',['generated_data_key_to_return',['../structtest__keyring.html#a84cafd067dc7ad4b8ef5feb3bf043184',1,'test_keyring']]],
+  ['group',['group',['../structtest__case.html#adefc0c5ef336906d1634efa94da189df',1,'test_case']]]
 ];

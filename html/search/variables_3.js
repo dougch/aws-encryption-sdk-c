@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['enc_5fctx_334',['enc_ctx',['../structaws__cryptosdk__enc__request.html#a70f21cfc891a77981e53b6784d6dcca8',1,'aws_cryptosdk_enc_request::enc_ctx()'],['../structaws__cryptosdk__dec__request.html#a507353214e49995b3ef1028bee5a2117',1,'aws_cryptosdk_dec_request::enc_ctx()']]],
-  ['encrypted_5fdata_5fkeys_335',['encrypted_data_keys',['../structaws__cryptosdk__enc__materials.html#a493807aa8172ef7a00b272b25a0b086a',1,'aws_cryptosdk_enc_materials::encrypted_data_keys()'],['../structaws__cryptosdk__dec__request.html#a3c6b7a27c5cf77f204b4ada85ae5c4db',1,'aws_cryptosdk_dec_request::encrypted_data_keys()']]]
+  ['data_5fkey',['data_key',['../structraw__aes__keyring__test__vector.html#a5ad490810e9d9e253e6f60a24775b10e',1,'raw_aes_keyring_test_vector::data_key()'],['../structraw__rsa__keyring__test__vector.html#aef5f5d30ac0242058a4178d21534903b',1,'raw_rsa_keyring_test_vector::data_key()']]],
+  ['data_5fkey_5flen',['data_key_len',['../structaws__cryptosdk__alg__properties.html#a93ec71e3abd75121a42ac054c74617d7',1,'aws_cryptosdk_alg_properties::data_key_len()'],['../structraw__aes__keyring__test__vector.html#adc866ddb25f1719af92322f496d03ebb',1,'raw_aes_keyring_test_vector::data_key_len()'],['../structraw__rsa__keyring__test__vector.html#a450589542f32437e74149f5155f7574d',1,'raw_rsa_keyring_test_vector::data_key_len()']]],
+  ['dec_5fmaterials',['dec_materials',['../structmock__materials__cache.html#a811963383132cacaca2c2db9595a1b92',1,'mock_materials_cache']]],
+  ['decrypt_5fmaterials',['decrypt_materials',['../structaws__cryptosdk__cmm__vt.html#acbf3473d2d0422da5f8ea38951e95d9e',1,'aws_cryptosdk_cmm_vt']]],
+  ['decrypted_5fdata_5fkey_5fto_5freturn',['decrypted_data_key_to_return',['../structtest__keyring.html#ae91edce5f7a8fc38c5bda22bf9b594c9',1,'test_keyring']]],
+  ['destroy',['destroy',['../structaws__cryptosdk__cmm__vt.html#ae685283af77f4994faf19cfb20446470',1,'aws_cryptosdk_cmm_vt::destroy()'],['../structaws__cryptosdk__keyring__vt.html#a6b5717ac9df79db82393962dacf5a62e',1,'aws_cryptosdk_keyring_vt::destroy()']]],
+  ['destroy_5fcalled',['destroy_called',['../structtest__keyring.html#ad5ccf60076fb35c9b6fa4c6d7df84023',1,'test_keyring']]]
 ];

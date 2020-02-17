@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['tag_5flen_352',['tag_len',['../structaws__cryptosdk__alg__properties.html#ae5daefb1cf93cb853bb24d1680692b5b',1,'aws_cryptosdk_alg_properties']]]
+  ['plaintext_5fsize',['plaintext_size',['../structaws__cryptosdk__enc__request.html#a05bf93a03acc904658eb93a18f6c8f46',1,'aws_cryptosdk_enc_request']]],
+  ['provider_5fid',['provider_id',['../structaws__cryptosdk__edk.html#a6ab2d7c56aac25c1b16c88d2e90110ed',1,'aws_cryptosdk_edk']]],
+  ['provider_5finfo',['provider_info',['../structaws__cryptosdk__edk.html#ae74d4376f0664a62f986cc2e9113d1fe',1,'aws_cryptosdk_edk']]]
 ];
