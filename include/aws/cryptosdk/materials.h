@@ -126,6 +126,10 @@ struct aws_cryptosdk_enc_request {
     uint64_t plaintext_size;
 };
 
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_enc_request_is_valid(const struct aws_cryptosdk_enc_request *request) {
+    return request && aws_allocator_is_valid(request->alloc) && aws_hash_table_is_valid(request->enc_ctx);
+}
+
 /**
  * Materials returned from a CMM generate_enc_materials operation
  */
@@ -151,6 +155,11 @@ struct aws_cryptosdk_dec_request {
     enum aws_cryptosdk_alg_id alg;
 };
 
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_dec_request_is_valid(const struct aws_cryptosdk_dec_request *request) {
+    return request && aws_allocator_is_valid(request->alloc) &&
+           aws_cryptosdk_edk_list_is_valid(&request->encrypted_data_keys) && aws_hash_table_is_valid(request->enc_ctx);
+}
+
 /**
  * Decryption materials returned from CMM to session
  */
@@ -163,6 +172,32 @@ struct aws_cryptosdk_dec_materials {
     struct aws_cryptosdk_sig_ctx *signctx;
     enum aws_cryptosdk_alg_id alg;
 };
+
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_enc_materials_is_valid(
+    const struct aws_cryptosdk_enc_materials *materials) {
+    if (!AWS_OBJECT_PTR_IS_WRITABLE(materials)) {
+        return false;
+    }
+    bool allocator_valid            = aws_allocator_is_valid(materials->alloc);
+    bool unencrypted_data_key_valid = aws_byte_buf_is_valid(&materials->unencrypted_data_key);
+    bool keyring_trace_valid        = aws_cryptosdk_keyring_trace_is_valid(&materials->keyring_trace);
+    bool encrypted_data_keys_valid  = aws_cryptosdk_edk_list_is_valid(&materials->encrypted_data_keys);
+    bool signctx_valid = (materials->signctx == NULL) || aws_cryptosdk_sig_ctx_is_valid(materials->signctx);
+    return allocator_valid && unencrypted_data_key_valid && keyring_trace_valid && encrypted_data_keys_valid &&
+           signctx_valid;
+}
+
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_dec_materials_is_valid(
+    const struct aws_cryptosdk_dec_materials *materials) {
+    if (!AWS_OBJECT_PTR_IS_WRITABLE(materials)) {
+        return false;
+    }
+    bool allocator_valid            = aws_allocator_is_valid(materials->alloc);
+    bool unencrypted_data_key_valid = aws_byte_buf_is_valid(&materials->unencrypted_data_key);
+    bool keyring_trace_valid        = aws_cryptosdk_keyring_trace_is_valid(&materials->keyring_trace);
+    bool signctx_valid = (materials->signctx == NULL) || aws_cryptosdk_sig_ctx_is_valid(materials->signctx);
+    return allocator_valid && unencrypted_data_key_valid && keyring_trace_valid && signctx_valid;
+}
 
 #ifndef AWS_CRYPTOSDK_DOXYGEN /* do not document internal macros */
 
@@ -329,7 +364,7 @@ struct aws_cryptosdk_cmm_vt {
  * Putting this here for now, until we get it merged into the atomics.h in c-common
  */
 AWS_CRYPTOSDK_STATIC_INLINE bool aws_atomic_var_is_valid(const struct aws_atomic_var *var) {
-    return AWS_OBJECT_PTR_IS_WRITABLE(var);
+    return AWS_OBJECT_PTR_IS_WRITABLE(var) && AWS_OBJECT_PTR_IS_WRITABLE((size_t *)aws_atomic_load_ptr(var));
 }
 
 /**
@@ -380,7 +415,7 @@ AWS_CRYPTOSDK_STATIC_INLINE void aws_cryptosdk_cmm_release(struct aws_cryptosdk_
  */
 AWS_CRYPTOSDK_STATIC_INLINE struct aws_cryptosdk_cmm *aws_cryptosdk_cmm_retain(struct aws_cryptosdk_cmm *cmm) {
     AWS_PRECONDITION(aws_cryptosdk_cmm_base_is_valid(cmm));
-    AWS_PRECONDITION(AWS_ATOMIC_VAR_INTVAL(&cmm->refcount) < SIZE_MAX);
+    AWS_PRECONDITION(aws_atomic_load_int(&cmm->refcount) < SIZE_MAX);
     aws_cryptosdk_private_refcount_up(&cmm->refcount);
     AWS_POSTCONDITION(aws_cryptosdk_cmm_base_is_valid(cmm));
     return cmm;
@@ -400,6 +435,12 @@ AWS_CRYPTOSDK_STATIC_INLINE int aws_cryptosdk_cmm_generate_enc_materials(
     struct aws_cryptosdk_cmm *cmm,
     struct aws_cryptosdk_enc_materials **output,
     struct aws_cryptosdk_enc_request *request) {
+    if (output) {
+        *output = NULL;
+    }
+    AWS_ERROR_PRECONDITION(aws_cryptosdk_cmm_base_is_valid(cmm), AWS_ERROR_UNIMPLEMENTED);
+    AWS_ERROR_PRECONDITION(output == NULL || AWS_OBJECT_PTR_IS_WRITABLE(output));
+    AWS_ERROR_PRECONDITION(request == NULL || aws_cryptosdk_enc_request_is_valid(request));
     AWS_CRYPTOSDK_PRIVATE_VF_CALL(generate_enc_materials, cmm, output, request);
     return ret;
 }
@@ -417,6 +458,13 @@ AWS_CRYPTOSDK_STATIC_INLINE int aws_cryptosdk_cmm_decrypt_materials(
     struct aws_cryptosdk_cmm *cmm,
     struct aws_cryptosdk_dec_materials **output,
     struct aws_cryptosdk_dec_request *request) {
+    if (output) {
+        *output = NULL;
+    }
+    AWS_ERROR_PRECONDITION(aws_cryptosdk_cmm_base_is_valid(cmm), AWS_ERROR_UNIMPLEMENTED);
+    AWS_ERROR_PRECONDITION(output == NULL || AWS_OBJECT_PTR_IS_WRITABLE(output));
+    AWS_ERROR_PRECONDITION(request == NULL || aws_cryptosdk_dec_request_is_valid(request));
+
     AWS_CRYPTOSDK_PRIVATE_VF_CALL(decrypt_materials, cmm, output, request);
     return ret;
 }
@@ -473,11 +521,31 @@ struct aws_cryptosdk_keyring_vt {
 };
 
 /**
+ * Constant time check of data-structure invariants for struct aws_cryptosdk_keyring_vt.
+ */
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_keyring_vt_is_valid(const struct aws_cryptosdk_keyring_vt *vtable) {
+    return AWS_OBJECT_PTR_IS_READABLE(vtable) && aws_c_string_is_valid(vtable->name) &&
+           /* Always set to sizeof(struct aws_cryptosdk_keyring_vt). */
+           (vtable->vt_size == sizeof(struct aws_cryptosdk_keyring_vt));
+}
+
+/**
+ * Constant time check of data-structure invariants for struct aws_cryptosdk_keyring.
+ */
+AWS_CRYPTOSDK_STATIC_INLINE bool aws_cryptosdk_keyring_is_valid(const struct aws_cryptosdk_keyring *keyring) {
+    return AWS_OBJECT_PTR_IS_READABLE(keyring) && aws_atomic_var_is_valid(&keyring->refcount) &&
+           (aws_atomic_load_int(&keyring->refcount) > 0) && (aws_atomic_load_int(&keyring->refcount) <= SIZE_MAX) &&
+           (keyring->vtable == NULL || aws_cryptosdk_keyring_vt_is_valid(keyring->vtable));
+}
+
+/**
  * Initialize the base structure for a keyring. The implementation of a keyring needs to call this function
  * to set up the vtable and reference count. On return, the reference count is initialized to 1.
  */
 AWS_CRYPTOSDK_STATIC_INLINE void aws_cryptosdk_keyring_base_init(
     struct aws_cryptosdk_keyring *keyring, const struct aws_cryptosdk_keyring_vt *vtable) {
+    AWS_PRECONDITION(keyring != NULL);
+    AWS_PRECONDITION(vtable == NULL || aws_cryptosdk_keyring_vt_is_valid(vtable));
     keyring->vtable = vtable;
     aws_atomic_init_int(&keyring->refcount, 1);
 }
@@ -487,6 +555,7 @@ AWS_CRYPTOSDK_STATIC_INLINE void aws_cryptosdk_keyring_base_init(
  * Decrements the reference count on the keyring; if the new reference count is zero, the keyring is destroyed.
  */
 AWS_CRYPTOSDK_STATIC_INLINE void aws_cryptosdk_keyring_release(struct aws_cryptosdk_keyring *keyring) {
+    AWS_PRECONDITION(!keyring || (aws_cryptosdk_keyring_is_valid(keyring) && keyring->vtable != NULL));
     if (keyring && aws_cryptosdk_private_refcount_down(&keyring->refcount)) {
         AWS_CRYPTOSDK_PRIVATE_VF_CALL_NO_RETURN(destroy, keyring);
     }
@@ -498,6 +567,9 @@ AWS_CRYPTOSDK_STATIC_INLINE void aws_cryptosdk_keyring_release(struct aws_crypto
  */
 AWS_CRYPTOSDK_STATIC_INLINE struct aws_cryptosdk_keyring *aws_cryptosdk_keyring_retain(
     struct aws_cryptosdk_keyring *keyring) {
+    AWS_PRECONDITION(aws_cryptosdk_keyring_is_valid(keyring));
+    AWS_PRECONDITION(aws_atomic_var_is_valid(&keyring->refcount));
+    AWS_PRECONDITION(aws_atomic_load_int(&keyring->refcount) < SIZE_MAX);
     aws_cryptosdk_private_refcount_up(&keyring->refcount);
     return keyring;
 }
